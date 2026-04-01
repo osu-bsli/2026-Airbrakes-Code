@@ -1,0 +1,44 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build - g++",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-O2",
+        "-g",
+
+        "-I", "${workspaceFolder}/Filters",
+        "-I", "${workspaceFolder}",
+
+        "Modeling and Testing Code/State_Est_Ex.cpp",
+
+        "Filters/AB_Filter_Main.cpp",
+        "Filters/AB_Attitude_Filter.cpp",
+        "Filters/AB_Vertical_Filter.cpp",
+        "Filters/AB_Horizontal_Filter.cpp",
+
+        "MathFunctions.cpp",
+        "AB_Deployment.cpp",
+
+        "-o",
+        "ab_filter.exe",
+
+        "-lpsapi"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": "$gcc",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
