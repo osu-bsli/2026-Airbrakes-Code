@@ -65,7 +65,16 @@ float drag_coeff(float theta, float velocity, float height)
     float T = 15.04 - 0.00649 * height;
     float a = sqrt(1.4*287.0529*T);
     float Mach = velocity/a;
-    return(0.4792 + -0.3960*Mach + 0.000091*theta + 0.2975*Mach*Mach + -0.000002*theta*theta + -0.000211*Mach*theta)
+    float Cd = 0.4792 + -0.3960*Mach + 0.000091*theta + 0.2975*Mach*Mach + -0.000002*theta*theta + -0.000211*Mach*theta;
+    if(Cd > 0.5)
+    {
+        Cd = 0.5;
+    }
+    else if (Cd < 0.01)
+    {
+        Cd = 0.01;
+    }
+    return(Cd);
 }
 
 //calculates air density from standard atmosphere table
