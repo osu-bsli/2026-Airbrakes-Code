@@ -64,7 +64,8 @@ float drag_coeff(float theta, float velocity, float height)
     //keep in mind the theta needs to be a percentage of deploymnet, not actual angle.
     float T = 15.04 - 0.00649 * height;
     float a = sqrt(1.4*287.0529*T);
-    return(-0.06828 * velocity / a * 0.01 + .243866 * theta + .333907);
+    float Mach = velocity/a;
+    return(0.4792 + -0.3960*Mach + 0.000091*theta + 0.2975*Mach*Mach + -0.000002*theta*theta + -0.000211*Mach*theta)
 }
 
 //calculates air density from standard atmosphere table
